@@ -1,6 +1,7 @@
 from PyQt5 import uic,QtWidgets
 import mysql.connector
 
+data = ""
 dados = ""
 banco = mysql.connector.connect(
     host="localhost",
@@ -46,10 +47,31 @@ def funcao_princip():
 
 def pegar_data():
     data = str(cadastro.calendarWidget.selectedDate())
-    mes = int(data[25:27])
-    #mes = data[25:27]
-    print (mes)
+    print(data)
+    verificames = (data[26])
+    verificadia = (data[29])
+    carrymes = False
+    carrydia = True
+    dia = data[28:30]
+    #print(verificadia)
+    #############  VERIFICA SE ATINGIU CARRY DO DÍGITO #######################
+    if verificames == ",":
+        mes = int(data[25])
+    else:
+        mes=int(data[25:27])
+        carrymes = True
+        print("chegou aqui")
+    ###########################################################################
 
+    if verificadia == ")":
+        dia = int(data[28])
+        carrydia = False
+        #print(dia)
+    if carrydia and carrymes == True:
+        print("entrou aqui aqui")
+        print(data[28:30])
+    print("MES", mes)
+    print("DIA", dia)
     #mes = data[25]
         
 
