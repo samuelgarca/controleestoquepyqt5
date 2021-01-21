@@ -1,5 +1,7 @@
 from PyQt5 import uic,QtWidgets
 import mysql.connector
+from PyQt5.QtWidgets import QMessageBox
+import time
 
 data = ""
 dados = ""
@@ -18,10 +20,7 @@ def funcao_princip():
     mes = cadastro.comboBox_3.currentText()
     ano = cadastro.comboBox_4.currentText()
     dataconvert = [dia, mes, ano]
-    data = '-'.join(map(str, dataconvert))
-    #data1 =''.join(data)
-    print(data)
-
+    data = '-'.join(map(str, dataconvert)) 
     local = ""
 
 ## Verifica qual campo foi selecionado ##
@@ -35,16 +34,22 @@ def funcao_princip():
         print("Frezer 3 foi selecionado")
         local ="Frezer 3"
 
+
+    if quantidade !="":
+        cursor = banco.cursor()
+        comando_SQL = "INSERT INTO estoque (descricao, quantidade, data, local) VALUES (%s, %s, %s, %s)"
+        dados = (str(descricao), quantidade, data, local)
+        cursor.execute(comando_SQL, dados)
+        banco.commit()
+        QMessageBox.about(cadastro, "Alerta", "Salvo")
+        print("gravado", descricao, quantidade, data, local)
+        time.sleep(1)
+    else:
+        QMessageBox.about(cadastro, "Alerta", "Insira a Quantidade")
     
-    print("test")
-    print("gravado", descricao, quantidade, data, local)
 
 
-    cursor = banco.cursor()
-    comando_SQL = "INSERT INTO estoque (descricao, quantidade, data, local) VALUES (%s, %s, %s, %s)"
-    dados = (str(descricao), quantidade, data, local)
-    cursor.execute(comando_SQL, dados)
-    banco.commit()
+        
     ## Limpa Campos ##
     cadastro.lineEdit.setText("")
 
@@ -99,6 +104,18 @@ def freezer_2():
 def freezer_3():
     print("freezer3")
     tela_freezer_3.show()
+    cursor = banco.cursor()
+    #comando_SQL = "SELECT * FROM estoque"
+    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3' "
+    cursor.execute(comando_SQL,dados)
+    dados_lidos = cursor.fetchall()
+    tela_freezer_3.tableWidget.setRowCount(len(dados_lidos))
+    tela_freezer_3.tableWidget.setColumnCount(4)
+    print(dados_lidos)
+    for i in range(0, len(dados_lidos)):
+        for j in range(0, 4):
+            tela_freezer_3.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
 
     
 
