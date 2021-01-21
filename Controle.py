@@ -107,7 +107,7 @@ def freezer_3():
     cursor = banco.cursor()
     #comando_SQL = "SELECT * FROM estoque"
     comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3' "
-    cursor.execute(comando_SQL,dados)
+    cursor.execute(comando_SQL, dados)
     dados_lidos = cursor.fetchall()
     tela_freezer_3.tableWidget.setRowCount(len(dados_lidos))
     tela_freezer_3.tableWidget.setColumnCount(4)
@@ -115,6 +115,49 @@ def freezer_3():
     for i in range(0, len(dados_lidos)):
         for j in range(0, 4):
             tela_freezer_3.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
+
+
+def tela_editar():
+    tela_saida.show()
+    veredit = tela_saida.comboBox.currentText()
+    print(veredit)
+    #tela_saida.pushButton_5.clicked.connect(editar)
+    if veredit == "Freezer 1":
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1' "
+        cursor.execute(comando_SQL,dados)
+        dados_lidos = cursor.fetchall()
+        tela_saida.tableWidget.setRowCount(len(dados_lidos))
+        tela_saida.tableWidget.setColumnCount(4)
+        print(dados_lidos)
+        for i in range(0, len(dados_lidos)):
+            for j in range(0, 4):
+                tela_saida.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
+    if veredit == "Freezer 2":
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2' "
+        cursor.execute(comando_SQL,dados)
+        dados_lidos = cursor.fetchall()
+        tela_saida.tableWidget.setRowCount(len(dados_lidos))
+        tela_saida.tableWidget.setColumnCount(4)
+        print(dados_lidos)
+        for i in range(0, len(dados_lidos)):
+            for j in range(0, 4):
+                tela_saida.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
+    if veredit == "Freezer 3":
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3' "
+        cursor.execute(comando_SQL,dados)
+        dados_lidos = cursor.fetchall()
+        tela_saida.tableWidget.setRowCount(len(dados_lidos))
+        tela_saida.tableWidget.setColumnCount(4)
+        print(dados_lidos)
+        for i in range(0, len(dados_lidos)):
+            for j in range(0, 4):
+                tela_saida.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
 
     
@@ -132,16 +175,19 @@ ver_estoque=uic.loadUi("telaview.ui")
 tela_freezer_1=uic.loadUi("freezer_1.ui")
 tela_freezer_2=uic.loadUi("freezer_2.ui")
 tela_freezer_3=uic.loadUi("freezer_3.ui")
+tela_saida=uic.loadUi("saida.ui")
 
 ### Verifica qual botão é apertado ###
 menu.pushButton_2.clicked.connect(tela_estoque_)
 menu.pushButton.clicked.connect(tela_estoque)
+menu.pushButton_3.clicked.connect(tela_editar)
 cadastro.pushButton.clicked.connect(funcao_princip)
 cadastro.pushButton_2.clicked.connect(menu_)
 ver_estoque.pushButton_4.clicked.connect(menu_)
 ver_estoque.pushButton.clicked.connect(freezer_1)
 ver_estoque.pushButton_2.clicked.connect(freezer_2)
 ver_estoque.pushButton_3.clicked.connect(freezer_3)
+tela_saida.pushButton_5.clicked.connect(tela_editar)
 
 
 #estoque.show()

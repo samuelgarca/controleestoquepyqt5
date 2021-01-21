@@ -191,8 +191,14 @@
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 243, 199);</string>
        </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::NoPen</enum>
        </property>
        <column>
         <property name="text">
