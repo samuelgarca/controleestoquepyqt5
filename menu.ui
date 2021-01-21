@@ -61,7 +61,7 @@
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>180</x>
+         <x>210</x>
          <y>0</y>
          <width>361</width>
          <height>41</height>
@@ -119,10 +119,31 @@
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
-        <string>Cadastro Estoque</string>
+        <string>Entrada de Produtos</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>330</y>
+         <width>301</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Ver Estoque</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
        <property name="geometry">
         <rect>
          <x>100</x>
@@ -140,7 +161,7 @@
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
-        <string>Ver Estoque</string>
+        <string>Saída de Produtos</string>
        </property>
       </widget>
      </widget>

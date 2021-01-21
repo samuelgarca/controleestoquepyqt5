@@ -174,21 +174,43 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QTableView" name="tableView">
+      <widget class="QTableWidget" name="tableWidget">
        <property name="geometry">
         <rect>
-         <x>35</x>
-         <y>51</y>
-         <width>521</width>
+         <x>20</x>
+         <y>60</y>
+         <width>551</width>
          <height>331</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 243, 199);</string>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
+       <column>
+        <property name="text">
+         <string>Produto</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Quantidade</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Data</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Local</string>
+        </property>
+       </column>
       </widget>
      </widget>
     </item>

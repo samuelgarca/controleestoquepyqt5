@@ -12,9 +12,15 @@ banco = mysql.connector.connect(
 
 
 def funcao_princip():
-    codigo = cadastro.lineEdit.text()
-    descricao = cadastro.lineEdit_2.text()
-    quantidade = cadastro.lineEdit_3.text()
+    descricao = cadastro.comboBox.currentText()
+    quantidade = cadastro.lineEdit.text()
+    dia = cadastro.comboBox_2.currentText()
+    mes = cadastro.comboBox_3.currentText()
+    ano = cadastro.comboBox_4.currentText()
+    dataconvert = [dia, mes, ano]
+    data = '-'.join(map(str, dataconvert))
+    #data1 =''.join(data)
+    print(data)
 
     local = ""
 
@@ -31,48 +37,19 @@ def funcao_princip():
 
     
     print("test")
-    print("gravado", codigo, descricao, quantidade)
+    print("gravado", descricao, quantidade, data, local)
 
 
     cursor = banco.cursor()
-    comando_SQL = "INSERT INTO estoque (codigo,descricao,quantidade,local) VALUES (%s,%s,%s,%s)"
-    dados = (str(codigo),str(descricao),int(quantidade),local)
-    cursor.execute(comando_SQL,dados)
+    comando_SQL = "INSERT INTO estoque (descricao, quantidade, data, local) VALUES (%s, %s, %s, %s)"
+    dados = (str(descricao), quantidade, data, local)
+    cursor.execute(comando_SQL, dados)
     banco.commit()
     ## Limpa Campos ##
     cadastro.lineEdit.setText("")
-    cadastro.lineEdit_2.setText("")
-    cadastro.lineEdit_3.setText("")
 
 
-def pegar_data():
-    data = str(cadastro.calendarWidget.selectedDate())
-    print(data)
-    verificames = (data[26])
-    verificadia = (data[29])
-    carrymes = False
-    carrydia = True
-    dia = data[28:30]
-    #print(verificadia)
-    #############  VERIFICA SE ATINGIU CARRY DO DÍGITO #######################
-    if verificames == ",":
-        mes = int(data[25])
-    else:
-        mes=int(data[25:27])
-        carrymes = True
-        print("chegou aqui")
-    ###########################################################################
 
-    if verificadia == ")":
-        dia = int(data[28])
-        carrydia = False
-        #print(dia)
-    if carrydia and carrymes == True:
-        print("entrou aqui aqui")
-        print(data[28:30])
-    print("MES", mes)
-    print("DIA", dia)
-    #mes = data[25]
         
 
 def tela_estoque():
@@ -93,27 +70,31 @@ def freezer_1():
     tela_freezer_1.show()
     cursor = banco.cursor()
     #comando_SQL = "SELECT * FROM estoque"
-    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2' "
+    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1' "
     cursor.execute(comando_SQL,dados)
     dados_lidos = cursor.fetchall()
     tela_freezer_1.tableWidget.setRowCount(len(dados_lidos))
-    tela_freezer_1.tableWidget.setColumnCount(5)
-    tela_freezer_1.tableWidget.setItem(0,3,QtWidgets.QTableWidgetItem(str(dados_lidos[0][3])))
+    tela_freezer_1.tableWidget.setColumnCount(4)
     print(dados_lidos)
-    #datetime = QDateTime.currentDateTime()
-    #print(datetime.toString())
-    #for i in range(0, len(dados_lidos)):
-     #   for j in range(0, 5):
-            #quantidade_lida= 0
-      #      tela_freezer_1.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
-            #soma_quantidade =sum(dados_lidos[i][3])
-            #quantidade_lida = dados_lidos[i][3]
-            #quantidade_leu = quantidade_lida+quantidade_leu
+    for i in range(0, len(dados_lidos)):
+        for j in range(0, 4):
+            tela_freezer_1.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
+
             
 
 def freezer_2():
     tela_freezer_2.show()
-    print("freezer2")
+    cursor = banco.cursor()
+    #comando_SQL = "SELECT * FROM estoque"
+    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2' "
+    cursor.execute(comando_SQL,dados)
+    dados_lidos = cursor.fetchall()
+    tela_freezer_2.tableWidget.setRowCount(len(dados_lidos))
+    tela_freezer_2.tableWidget.setColumnCount(4)
+    print(dados_lidos)
+    for i in range(0, len(dados_lidos)):
+        for j in range(0, 4):
+            tela_freezer_2.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
 def freezer_3():
     print("freezer3")
@@ -140,8 +121,6 @@ menu.pushButton_2.clicked.connect(tela_estoque_)
 menu.pushButton.clicked.connect(tela_estoque)
 cadastro.pushButton.clicked.connect(funcao_princip)
 cadastro.pushButton_2.clicked.connect(menu_)
-cadastro.calendarWidget.selectionChanged.connect(pegar_data)
-#cadastro.dateEdit.clicked.connect(funcao_princip)
 ver_estoque.pushButton_4.clicked.connect(menu_)
 ver_estoque.pushButton.clicked.connect(freezer_1)
 ver_estoque.pushButton_2.clicked.connect(freezer_2)
