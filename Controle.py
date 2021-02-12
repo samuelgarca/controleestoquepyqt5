@@ -118,6 +118,7 @@ def freezer_3():
     dados_lidos = cursor.fetchall()
     tela_freezer_3.tableWidget.setRowCount(len(dados_lidos))
     tela_freezer_3.tableWidget.setColumnCount(4)
+    comando_SQL = "SELECT  FROM estoque WHERE local = 'Frezer 3' "
     print(dados_lidos)
     for i in range(0, len(dados_lidos)):
         for j in range(0, 4):
@@ -127,20 +128,39 @@ def freezer_3():
 
 
 def excluir_dados():
-    linha = tela_saida.tableWidget.currentRow() +1
-    coluna = tela_saida.tableWidget.currentColumn() +1
-    test4 = tela_saida.tableWidget.cellWidget(linha, coluna)
-    test5 = tela_saida.tableWidget.currentItem()
-    test7 = tela_saida.tableWidget.editItem(test5)
-    test6 = tela_saida.tableWidget.currentIndex()
-    test8 = tela_saida.tableWidget.setCurrentItem(test5)
+    linha = tela_saida.tableWidget.currentRow()
+    coluna = tela_saida.tableWidget.currentColumn()
+    veredit = tela_saida.comboBox.currentText()
+    cursor = banco.cursor()
+    #print(veredit)
+    if veredit == "Freezer 1":
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1' "
+        cursor.execute(comando_SQL,dados)
+        dados_lidos = cursor.fetchall()
+        print(dados_lidos)
+        local = dados_lidos[linha][coluna]
+        cursor.execute("SELECT * FROM estoque WHERE")
+        print(local)
+
+
+    #coluna = tela_saida.tableWidget.currentColumn() +1
+    #index = tela_saida.tableWidget.currentIndex()
+    #test4 = tela_saida.tableWidget.cellWidget(linha, coluna)
+    #test5 = tela_saida.tableWidget.currentItem()
+    #test7 = tela_saida.tableWidget.editItem(test5)
+    #test6 = tela_saida.tableWidget.currentIndex()
+    #test8 = tela_saida.tableWidget.selectedItems()
+    #test9 = tela_saida.tableWidget.setCurrentItem(test5)
+    #NewIndex = tela_saida.tableWidget.model().index(index.row(), 0)
+    #test8 = tela_saida.tableWidget.setCurrentItem(test5)
     #test4 = tela_saida.tableWidget.setCellWidget(linha,coluna)
     print(linha)
-    print(coluna)
-    print(test4)
-    #print(test5)
-    #print(test6)
-    #print(test7)
+    #print(coluna)
+    #print(test4)
+    #print(test8)
+    #print(NewIndex)
+    #print(test9)
     #print(test8)
 
 
@@ -220,7 +240,7 @@ def monitor_():
 
 app=QtWidgets.QApplication([])
 ### Carregar janelas ###
-cadastro=uic.loadUi("cadastro.ui")
+cadastro=uic.loadUi("cadastro2.ui")
 menu=uic.loadUi("menu.ui")
 ver_estoque=uic.loadUi("telaview.ui")
 tela_freezer_1=uic.loadUi("freezer_1.ui")
@@ -228,6 +248,7 @@ tela_freezer_2=uic.loadUi("freezer_2.ui")
 tela_freezer_3=uic.loadUi("freezer_3.ui")
 tela_saida=uic.loadUi("saida.ui")
 tela_monitor=uic.loadUi("monitor.ui")
+tela_editar_qt=uic.loadUi("telaedit.ui")
 
 ### Verifica qual botão é apertado ###
 menu.pushButton_2.clicked.connect(tela_estoque_)
@@ -241,7 +262,8 @@ ver_estoque.pushButton.clicked.connect(freezer_1)
 ver_estoque.pushButton_2.clicked.connect(freezer_2)
 ver_estoque.pushButton_3.clicked.connect(freezer_3)
 tela_saida.pushButton_5.clicked.connect(tela_editar)
-tela_saida.pushButton_5.clicked.connect(excluir_dados)
+#tela_saida.pushButton_5.clicked.connect(excluir_dados)
+tela_saida.pushButton_6.clicked.connect(excluir_dados)
 
 
 
