@@ -135,13 +135,22 @@ def excluir_dados():
     #print(veredit)
     if veredit == "Freezer 1":
         cursor = banco.cursor()
-        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1' "
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1'"
         cursor.execute(comando_SQL,dados)
         dados_lidos = cursor.fetchall()
-        print(dados_lidos)
         local = dados_lidos[linha][coluna]
-        cursor.execute("SELECT * FROM estoque WHERE")
+        tela_editar_qt.show()
+        tela_editar_qt.lineEdit.setText(str(local))
+        print(dados_lidos)
+        local = dados_lidos[linha]
         print(local)
+        quantidade = cadastro.lineEdit.text()
+        cursor = banco.cursor()
+
+
+def editar_qt():
+        quantidade = cadastro.lineEdit.text()
+        print(quantidade)
 
 
     #coluna = tela_saida.tableWidget.currentColumn() +1
@@ -155,7 +164,7 @@ def excluir_dados():
     #NewIndex = tela_saida.tableWidget.model().index(index.row(), 0)
     #test8 = tela_saida.tableWidget.setCurrentItem(test5)
     #test4 = tela_saida.tableWidget.setCellWidget(linha,coluna)
-    print(linha)
+    #print(linha)
     #print(coluna)
     #print(test4)
     #print(test8)
@@ -248,7 +257,7 @@ tela_freezer_2=uic.loadUi("freezer_2.ui")
 tela_freezer_3=uic.loadUi("freezer_3.ui")
 tela_saida=uic.loadUi("saida.ui")
 tela_monitor=uic.loadUi("monitor.ui")
-tela_editar_qt=uic.loadUi("telaedit.ui")
+tela_editar_qt=uic.loadUi("editar.ui")
 
 ### Verifica qual botão é apertado ###
 menu.pushButton_2.clicked.connect(tela_estoque_)
@@ -264,6 +273,7 @@ ver_estoque.pushButton_3.clicked.connect(freezer_3)
 tela_saida.pushButton_5.clicked.connect(tela_editar)
 #tela_saida.pushButton_5.clicked.connect(excluir_dados)
 tela_saida.pushButton_6.clicked.connect(excluir_dados)
+tela_editar_qt.pushButton.clicked.connect(editar_qt)
 
 
 
