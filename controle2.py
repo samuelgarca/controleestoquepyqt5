@@ -2,22 +2,30 @@ from PyQt5 import uic,QtWidgets
 import mysql.connector
 from PyQt5.QtWidgets import QMessageBox
 from datetime import date
+from mysql.connector.constants import ClientFlag
 import time
 
 data = ""
 dados = ""
-banco = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="samuelgarcia",
-    database="cadastro_estoques"
-)
-banco2 = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="samuelgarcia",
-    database="sensor_temp"
-)
+config = {
+    'user': 'root',
+    'password': 'kGCIwgJslnry9hjO',
+    'host': '35.247.216.160',
+    'client_flags': [ClientFlag.SSL],
+    'ssl_ca': 'server-ca.pem',
+    'ssl_cert': 'client-cert.pem',
+    'ssl_key': 'client-key.pem',
+    'database':'cadastro_estoques'
+}
+banco = mysql.connector.connect(**config)
+
+
+#banco2 = mysql.connector.connect(
+#    host="localhost",
+#    user="root",
+#    passwd="samuelgarcia",
+#    database="sensor_temp"
+#)
 
 
 def funcao_princip():
@@ -131,14 +139,16 @@ def excluir_dados():
     linha = tela_saida.tableWidget.currentRow()
     coluna = tela_saida.tableWidget.currentColumn()
     veredit = tela_saida.comboBox.currentText()
+    print(linha,coluna)
     cursor = banco.cursor()
-    #print(veredit)
-    if veredit == "Freezer 1":
+    print(veredit)
+    if veredit == "Freezer 1" and linha==0 and coluna==1:
         cursor = banco.cursor()
         comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1'"
         cursor.execute(comando_SQL,dados)
         dados_lidos = cursor.fetchall()
         local = dados_lidos[linha][coluna]
+        print(str(local))
         tela_editar_qt.show()
         tela_editar_qt.lineEdit.setText(str(local))
         print(dados_lidos)
@@ -147,6 +157,35 @@ def excluir_dados():
         quantidade = cadastro.lineEdit.text()
         cursor = banco.cursor()
 
+    if veredit == "Freezer 2" and linha==0 and coluna==1:
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2'"
+        cursor.execute(comando_SQL,dados)
+        dados_lidos = cursor.fetchall()
+        local = dados_lidos[linha][coluna]
+        print(str(local))
+        tela_editar_qt.show()
+        tela_editar_qt.lineEdit.setText(str(local))
+        print(dados_lidos)
+        local = dados_lidos[linha]
+        print(local)
+        quantidade = cadastro.lineEdit.text()
+        cursor = banco.cursor()
+
+    if veredit == "Freezer 3" and linha==0 and coluna==1:
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3'"
+        cursor.execute(comando_SQL,dados)
+        dados_lidos = cursor.fetchall()
+        local = dados_lidos[linha][coluna]
+        print(str(local))
+        tela_editar_qt.show()
+        tela_editar_qt.lineEdit.setText(str(local))
+        print(dados_lidos)
+        local = dados_lidos[linha]
+        print(local)
+        quantidade = cadastro.lineEdit.text()
+        cursor = banco.cursor()
 
 def editar_qt():
         quantidade = cadastro.lineEdit.text()
