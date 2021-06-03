@@ -7,6 +7,7 @@ import time
 
 data = ""
 dados = ""
+qtdglobal = ""
 config = {
     'user': 'root',
     'password': 'kGCIwgJslnry9hjO',
@@ -142,7 +143,7 @@ def excluir_dados():
     print(linha,coluna)
     cursor = banco.cursor()
     print(veredit)
-    if veredit == "Freezer 1" and linha==0 and coluna==1:
+    if veredit == "Freezer 1" and coluna==1:
         cursor = banco.cursor()
         comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1'"
         cursor.execute(comando_SQL,dados)
@@ -153,11 +154,13 @@ def excluir_dados():
         tela_editar_qt.lineEdit.setText(str(local))
         print(dados_lidos)
         local = dados_lidos[linha]
-        print(local)
+        #print(local)
         quantidade = cadastro.lineEdit.text()
-        cursor = banco.cursor()
+        tela_editar_qt.label_6.setText(dados_lidos[linha][0])
+        tela_editar_qt.label_7.setText(dados_lidos[linha][2])
+        tela_editar_qt.radioButton.setChecked(True)
 
-    if veredit == "Freezer 2" and linha==0 and coluna==1:
+    if veredit == "Freezer 2" and coluna==1:
         cursor = banco.cursor()
         comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2'"
         cursor.execute(comando_SQL,dados)
@@ -172,7 +175,7 @@ def excluir_dados():
         quantidade = cadastro.lineEdit.text()
         cursor = banco.cursor()
 
-    if veredit == "Freezer 3" and linha==0 and coluna==1:
+    if veredit == "Freezer 3" and coluna==1:
         cursor = banco.cursor()
         comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3'"
         cursor.execute(comando_SQL,dados)
@@ -188,8 +191,14 @@ def excluir_dados():
         cursor = banco.cursor()
 
 def editar_qt():
-        quantidade = cadastro.lineEdit.text()
+        descricao = tela_editar_qt.label_6.text()
+        quantidade = tela_editar_qt.lineEdit.text()
+        veredit = tela_saida.comboBox.currentText()
+        print(descricao)
+        print(veredit)
         print(quantidade)
+        
+        
 
 
     #coluna = tela_saida.tableWidget.currentColumn() +1
