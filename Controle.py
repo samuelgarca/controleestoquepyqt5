@@ -6,6 +6,7 @@ import time
 
 data = ""
 dados = ""
+idproduto = ""
 banco = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -44,7 +45,7 @@ def funcao_princip():
 
     if quantidade !="":
         cursor = banco.cursor()
-        comando_SQL = "INSERT INTO estoque (descricao, quantidade, data, local) VALUES (%s, %s, %s, %s)"
+        comando_SQL = "INSERT INTO estoque2 (descricao, quantidade, data, local) VALUES (%s, %s, %s, %s)"
         dados = (str(descricao), quantidade, data, local)
         cursor.execute(comando_SQL, dados)
         banco.commit()
@@ -76,20 +77,23 @@ def menu_():
 def tela_estoque_():
     cadastro.close()
     menu.close()
+    tela_freezer_1.close()
+    tela_freezer_2.close()
+    tela_freezer_3.close()
     ver_estoque.show()
 
 def freezer_1():
     tela_freezer_1.show()
     cursor = banco.cursor()
     #comando_SQL = "SELECT * FROM estoque"
-    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1' "
+    comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 1' "
     cursor.execute(comando_SQL,dados)
     dados_lidos = cursor.fetchall()
     tela_freezer_1.tableWidget.setRowCount(len(dados_lidos))
-    tela_freezer_1.tableWidget.setColumnCount(4)
+    tela_freezer_1.tableWidget.setColumnCount(5)
     print(dados_lidos)
     for i in range(0, len(dados_lidos)):
-        for j in range(0, 4):
+        for j in range(0, 5):
             tela_freezer_1.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
             
@@ -98,14 +102,14 @@ def freezer_2():
     tela_freezer_2.show()
     cursor = banco.cursor()
     #comando_SQL = "SELECT * FROM estoque"
-    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2' "
+    comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 2' "
     cursor.execute(comando_SQL,dados)
     dados_lidos = cursor.fetchall()
     tela_freezer_2.tableWidget.setRowCount(len(dados_lidos))
-    tela_freezer_2.tableWidget.setColumnCount(4)
+    tela_freezer_2.tableWidget.setColumnCount(5)
     print(dados_lidos)
     for i in range(0, len(dados_lidos)):
-        for j in range(0, 4):
+        for j in range(0, 5):
             tela_freezer_2.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
 def freezer_3():
@@ -113,15 +117,15 @@ def freezer_3():
     tela_freezer_3.show()
     cursor = banco.cursor()
     #comando_SQL = "SELECT * FROM estoque"
-    comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3' "
+    comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 3' "
     cursor.execute(comando_SQL, dados)
     dados_lidos = cursor.fetchall()
     tela_freezer_3.tableWidget.setRowCount(len(dados_lidos))
-    tela_freezer_3.tableWidget.setColumnCount(4)
+    tela_freezer_3.tableWidget.setColumnCount(5)
     comando_SQL = "SELECT  FROM estoque WHERE local = 'Frezer 3' "
     print(dados_lidos)
     for i in range(0, len(dados_lidos)):
-        for j in range(0, 4):
+        for j in range(0, 5):
             tela_freezer_3.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
 
@@ -131,46 +135,110 @@ def excluir_dados():
     linha = tela_saida.tableWidget.currentRow()
     coluna = tela_saida.tableWidget.currentColumn()
     veredit = tela_saida.comboBox.currentText()
+    #print(linha,coluna)
     cursor = banco.cursor()
     #print(veredit)
-    if veredit == "Freezer 1":
+    if veredit == "Freezer 1" and coluna==2:
         cursor = banco.cursor()
-        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1'"
-        cursor.execute(comando_SQL,dados)
+        comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 1'"
+        cursor.execute(comando_SQL)
         dados_lidos = cursor.fetchall()
         local = dados_lidos[linha][coluna]
+        tela_editar_qt.show()
+        tela_editar_qt.lineEdit.setText(str(local))
+        idproduto = str(dados_lidos[linha][0])
+        quantidade = cadastro.lineEdit.text()
+        tela_editar_qt.label_6.setText(dados_lidos[linha][1])
+        tela_editar_qt.label_7.setText(dados_lidos[linha][3])
+        tela_editar_qt.label_9.setText(idproduto)
+        tela_editar_qt.radioButton.setChecked(True)
+        banco.commit()
+
+    if veredit == "Freezer 2" and coluna==2:
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 2'"
+        cursor.execute(comando_SQL)
+        dados_lidos = cursor.fetchall()
+        local = dados_lidos[linha][coluna]
+        print(str(local))
         tela_editar_qt.show()
         tela_editar_qt.lineEdit.setText(str(local))
         print(dados_lidos)
         local = dados_lidos[linha]
         print(local)
         quantidade = cadastro.lineEdit.text()
-        cursor = banco.cursor()
+        banco.commit()
 
+    if veredit == "Freezer 3" and coluna==2:
+        cursor = banco.cursor()
+        comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 3'"
+        cursor.execute(comando_SQL)
+        dados_lidos = cursor.fetchall()
+        local = dados_lidos[linha][coluna]
+        print(str(local))
+        tela_editar_qt.show()
+        tela_editar_qt.lineEdit.setText(str(local))
+        print(dados_lidos)
+        local = dados_lidos[linha]
+        print(local)
+        quantidade = cadastro.lineEdit.text()
+        banco.commit()
 
 def editar_qt():
-        quantidade = cadastro.lineEdit.text()
-        print(quantidade)
+        descricao = tela_editar_qt.label_6.text()
+        novaquantidade = int(tela_editar_qt.lineEdit.text())
+        veredit = tela_saida.comboBox.currentText()
+        data = tela_editar_qt.label_7.text()
+        idproduto = tela_editar_qt.label_9.text()
+        #print (data)
+        cursor = banco.cursor()
+        if tela_editar_qt.radioButton.isChecked():
+            print("Frezer 1 selecionado")
+            local ="Frezer 1"
+            comando_SQL ="""UPDATE estoque2 
+                             SET descricao = %s, 
+                             quantidade = %s, 
+                             data = %s,
+                             local = %s 
+                             WHERE id = %s """
+            #comando_SQL = "UPDATE estoque SET (descricao, quantidade, data, local) WHERE local VALUES (%s, %s, %s, %s, %s)"
+            dados = (descricao, novaquantidade, data, local, idproduto)
+            print(dados)
+            cursor.execute(comando_SQL, dados)
+            banco.commit()
 
 
-    #coluna = tela_saida.tableWidget.currentColumn() +1
-    #index = tela_saida.tableWidget.currentIndex()
-    #test4 = tela_saida.tableWidget.cellWidget(linha, coluna)
-    #test5 = tela_saida.tableWidget.currentItem()
-    #test7 = tela_saida.tableWidget.editItem(test5)
-    #test6 = tela_saida.tableWidget.currentIndex()
-    #test8 = tela_saida.tableWidget.selectedItems()
-    #test9 = tela_saida.tableWidget.setCurrentItem(test5)
-    #NewIndex = tela_saida.tableWidget.model().index(index.row(), 0)
-    #test8 = tela_saida.tableWidget.setCurrentItem(test5)
-    #test4 = tela_saida.tableWidget.setCellWidget(linha,coluna)
-    #print(linha)
-    #print(coluna)
-    #print(test4)
-    #print(test8)
-    #print(NewIndex)
-    #print(test9)
-    #print(test8)
+        elif tela_editar_qt.radioButton_2.isChecked():
+            print("Frezer 2 selecionado")
+            local ="Frezer 2"
+            comando_SQL ="""UPDATE estoque2 
+                             SET descricao = %s, 
+                             quantidade = %s, 
+                             data = %s,
+                             local = %s 
+                             WHERE id = %s """
+            #comando_SQL = "UPDATE estoque SET (descricao, quantidade, data, local) WHERE local VALUES (%s, %s, %s, %s, %s)"
+            dados = (descricao, novaquantidade, data, local, idproduto)
+            print(dados)
+            cursor.execute(comando_SQL, dados)
+            banco.commit()
+        elif tela_editar_qt.radioButton_3.isChecked():
+            print("Frezer 3 foi selecionado")
+            local ="Frezer 3"
+            comando_SQL ="""UPDATE estoque2 
+                             SET descricao = %s, 
+                             quantidade = %s, 
+                             data = %s,
+                             local = %s 
+                             WHERE id = %s """
+            #comando_SQL = "UPDATE estoque SET (descricao, quantidade, data, local) WHERE local VALUES (%s, %s, %s, %s, %s)"
+            dados = (descricao, novaquantidade, data, local, idproduto)
+            print(dados)
+            cursor.execute(comando_SQL, dados)
+            banco.commit()
+        tela_editar_qt.close()
+        
+        
 
 
 
@@ -183,19 +251,19 @@ def tela_editar():
     #tela_saida.pushButton_5.clicked.connect(editar)
     if veredit == "Freezer 1":
         cursor = banco.cursor()
-        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 1' "
+        comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 1' "
         cursor.execute(comando_SQL,dados)
         dados_lidos = cursor.fetchall()
         tela_saida.tableWidget.setRowCount(len(dados_lidos))
-        tela_saida.tableWidget.setColumnCount(4)
+        tela_saida.tableWidget.setColumnCount(5)
         #print(dados_lidos)
         for i in range(0, len(dados_lidos)):
-            for j in range(0, 4):
+            for j in range(0, 5):
                 tela_saida.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
     if veredit == "Freezer 2":
         cursor = banco.cursor()
-        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 2' "
+        comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 2' "
         cursor.execute(comando_SQL,dados)
         dados_lidos = cursor.fetchall()
         tela_saida.tableWidget.setRowCount(len(dados_lidos))
@@ -205,7 +273,7 @@ def tela_editar():
         print(str(dados_lidos[linha][coluna]))
         
         for i in range(0, len(dados_lidos)):
-            for j in range(0, 4):
+            for j in range(0, 5):
                 tela_saida.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
         
         linha = tela_saida.tableWidget.currentRow() 
@@ -218,14 +286,14 @@ def tela_editar():
     
     if veredit == "Freezer 3":
         cursor = banco.cursor()
-        comando_SQL = "SELECT * FROM estoque WHERE local = 'Frezer 3' "
+        comando_SQL = "SELECT * FROM estoque2 WHERE local = 'Frezer 3' "
         cursor.execute(comando_SQL,dados)
         dados_lidos = cursor.fetchall()
         tela_saida.tableWidget.setRowCount(len(dados_lidos))
-        tela_saida.tableWidget.setColumnCount(4)
+        tela_saida.tableWidget.setColumnCount(5)
         #print(dados_lidos)
         for i in range(0, len(dados_lidos)):
-            for j in range(0, 4):
+            for j in range(0, 5):
                 tela_saida.tableWidget.setItem(i,j,QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
 
@@ -260,6 +328,9 @@ tela_monitor=uic.loadUi("monitor.ui")
 tela_editar_qt=uic.loadUi("editar.ui")
 
 ### Verifica qual botão é apertado ###
+tela_freezer_1.pushButton_4.clicked.connect(tela_estoque_)
+tela_freezer_2.pushButton_4.clicked.connect(tela_estoque_)
+tela_freezer_3.pushButton_4.clicked.connect(tela_estoque_)
 menu.pushButton_2.clicked.connect(tela_estoque_)
 menu.pushButton.clicked.connect(tela_estoque)
 menu.pushButton_3.clicked.connect(tela_editar)
@@ -282,10 +353,11 @@ menu.show()
 app.exec_()
 
 
-""" create table estoque (id INT NOT NULL AUTO_INCREMENT,
+""" create table estoque3 (
+id INT NOT NULL AUTO_INCREMENT,
 codigo INT,
-descricao VARCHAR(50),  
-quantidade DOUBLE,
+descricao TEXT,  
+quantidade INTE(11),
 local VARCHAR(20),
 PRIMARY KEY (id)
 );  """

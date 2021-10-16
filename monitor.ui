@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>601</width>
+    <width>680</width>
     <height>603</height>
    </rect>
   </property>
@@ -110,10 +110,62 @@
       <property name="lineWidth">
        <number>0</number>
       </property>
-      <widget class="QLabel" name="label_2">
+      <widget class="QFrame" name="frame_3">
        <property name="geometry">
         <rect>
-         <x>60</x>
+         <x>290</x>
+         <y>50</y>
+         <width>171</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(236, 236, 236);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>91</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>24</pointsize>
+          <weight>9</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 24pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(0, 170, 0);
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
          <y>80</y>
          <width>201</width>
          <height>41</height>
@@ -134,34 +186,7 @@
         <enum>QFrame::NoFrame</enum>
        </property>
        <property name="text">
-        <string>Temperatura</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>80</y>
-         <width>91</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>26</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 255, 127);</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="text">
-        <string/>
+        <string>Freezer 1</string>
        </property>
       </widget>
      </widget>
@@ -173,7 +198,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>601</width>
+     <width>680</width>
      <height>21</height>
     </rect>
    </property>

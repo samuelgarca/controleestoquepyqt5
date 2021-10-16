@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
+    <width>586</width>
     <height>592</height>
    </rect>
   </property>
@@ -239,6 +239,11 @@ selection-background-color: rgb(0, 0, 0);</string>
        </property>
        <column>
         <property name="text">
+         <string>Id</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
          <string>Produto</string>
         </property>
        </column>
@@ -290,7 +295,7 @@ selection-background-color: rgb(0, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>578</width>
+     <width>586</width>
      <height>21</height>
     </rect>
    </property>

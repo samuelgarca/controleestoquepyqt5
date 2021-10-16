@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>594</width>
+    <width>678</width>
     <height>592</height>
    </rect>
   </property>
@@ -129,7 +129,7 @@
         <rect>
          <x>20</x>
          <y>30</y>
-         <width>551</width>
+         <width>641</width>
          <height>361</height>
         </rect>
        </property>
@@ -177,9 +177,9 @@
       <widget class="QTableWidget" name="tableWidget">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>60</y>
-         <width>551</width>
+         <x>30</x>
+         <y>50</y>
+         <width>621</width>
          <height>331</height>
         </rect>
        </property>
@@ -195,14 +195,60 @@
         <enum>QFrame::NoFrame</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Sunken</enum>
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="showGrid">
+        <bool>false</bool>
        </property>
        <property name="gridStyle">
-        <enum>Qt::NoPen</enum>
+        <enum>Qt::CustomDashLine</enum>
        </property>
+       <property name="sortingEnabled">
+        <bool>false</bool>
+       </property>
+       <property name="columnCount">
+        <number>5</number>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>100</number>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>40</number>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>30</number>
+       </attribute>
+       <attribute name="verticalHeaderMinimumSectionSize">
+        <number>25</number>
+       </attribute>
        <column>
         <property name="text">
-         <string>Produto</string>
+         <string>Id</string>
+        </property>
+        <property name="font">
+         <font>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="textAlignment">
+         <set>AlignLeading|AlignTop</set>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Descricao</string>
         </property>
        </column>
        <column>
@@ -230,7 +276,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>594</width>
+     <width>678</width>
      <height>21</height>
     </rect>
    </property>
