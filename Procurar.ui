@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">backgroud-color: rgb(0, 0, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 170, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>26</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="text">
+          <string>Procurar Produto</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 127);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>90</y>
+         <width>151</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Quantidade</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>290</y>
+         <width>251</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 255, 0);</string>
+       </property>
+       <property name="text">
+        <string>Consultar</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>290</y>
+         <width>101</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>ClosedHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>VOLTAR</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>151</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Produto</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>100</y>
+         <width>361</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 75 14pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>180</y>
+         <width>151</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Local</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>401</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI Symbol</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+selection-color: rgb(255, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>BAURU</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DOB. PORTUGUESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DOB. CAL. CHD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DOB. FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DOB. CARNE CHD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DOGUINHO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>EMP. CAMARAO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>EMP. FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>EMP. PALMITO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ESF. CARNE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ESF. FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ EV FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ EV BOLONHESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ EV CALABRESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ EV CALABRESA. CHD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ EV PRESUNTO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ EV Q .Q</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>HOT DOG</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ CALABRESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ BOLONHESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ CALAB. CHD</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ CAMARAO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ CMUSSARELA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ PALMITO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ PRESUNTO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MCZ Q.Q</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MPZ CALABRESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MPZ FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MPZ MUSSARELA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MPZ PORTUGUESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MPZ Q.Q</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>INTEGRAL FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>INTEGRAL PALMITO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>INTEGRAL VEGETARIANO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>QUIBE RECHEADO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SAL. MASSA CONG.</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SAL. REQUEIJÃO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SALTENHA CALABRESA</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>SALTENHA FRANGO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ESF. CARNE QUEIJO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ESF. CARNE CHD</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>180</y>
+         <width>361</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 75 14pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>290</y>
+         <width>131</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>14</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>ClosedHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 213, 1);
+font: 75 14pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Editar</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
