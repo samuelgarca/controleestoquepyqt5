@@ -4,5 +4,5 @@ O objetivo é criar um sistema com suporte a interface touch, que possa rodar em
 Tela menu com interface. 
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/30785231/183723413-f2c9a2a5-cc3e-4e2a-9b46-bbbdf13624fe.png" width="700px" />
+<img src="https://user-images.githubusercontent.com/30785231/183740561-f8973201-b437-476e-bee1-4fbe9af0c56f.png" width="700px" />
 </div>
