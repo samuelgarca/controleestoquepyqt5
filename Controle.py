@@ -11,14 +11,14 @@ idproduto = ""
 banco = mysql.connector.connect(
     host="192.168.1.50",
     user="root2",
-    passwd="abacate3114481",
+    passwd="***",
     database="cadastro_estoques"
 )
 
 banco2 = mysql.connector.connect(
     host="192.168.1.50",
     user="root2",
-    passwd="abacate3114481",
+    passwd="***",
     database="Sensor_temp"
 )
 
